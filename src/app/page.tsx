@@ -8,11 +8,11 @@ export default function Home() {
       <div className="relative items-center w-full px-5 py-12 mx-auto lg:px-16 max-w-7xl md:px-12">
         <div className="max-w-3xl mx-auto text-center">
           <div>
-            {/* <span className="w-auto px-6 py-3 rounded-full bg-secondary">
+            <span className="w-auto px-6 py-3 rounded-full bg-secondary">
               <span className="text-sm font-medium text-primary">
-                Classifique suas anotações facilmente
+                Organize suas anotações facilmente
               </span>
-            </span> */}
+            </span>
 
             <h1 className="mt-8 text-3xl font-extrabold tracking-tight lg:text-6xl">
               Crie Notas com facilidade

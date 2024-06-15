@@ -1,10 +1,20 @@
 import { redirect } from "next/navigation";
 
-import { StripeSubscriptionCreationButton } from "@/app/components/SubmitButton";
+import {
+  StripePortal,
+  StripeSubscriptionCreationButton,
+} from "@/app/components/SubmitButton";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getStripeSession, stripe } from "@/app/lib/stripe";
-import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
 import prisma from "@/app/lib/db";
 
 const featureItems = [
@@ -61,6 +71,48 @@ export default async function BillingPage() {
     });
 
     return redirect(subscriptionUrl);
+  }
+
+  async function createCustomerPortal() {
+    "use server";
+
+    const session = await stripe.billingPortal.sessions.create({
+      customer: data?.user.stripeCustomerId as string,
+      return_url: `http://localhost:3000/dashboard/`,
+    });
+
+    return redirect(session.url);
+  }
+
+  if (data?.status === "active") {
+    return (
+      <div className="grid items-start gap-8">
+        <div className="flex items-center justify-between px-2">
+          <div className="grid gap-1">
+            <h1 className="text-3xl md:text-4xl font-medium">Assinaturas</h1>
+            <p className="text-lg text-muted-foreground">
+              {" "}
+              Configurações Relacionadas à Sua Assinatura
+            </p>
+          </div>
+        </div>
+
+        <Card className="w-full lg:w-2/3">
+          <CardHeader>
+            <CardTitle>Editar assinatura</CardTitle>
+            <CardDescription>
+              Clique no botão abaixo para ter a oportunidade de alterar seus
+              detalhes de pagamento e visualizar sua fatura ao mesmo tempo.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form action={createCustomerPortal}>
+              <StripePortal />
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   return (

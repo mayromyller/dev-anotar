@@ -60,7 +60,7 @@ export default async function SettingsPage() {
     <div className="grid items-start gap-8">
       <div className="flex items-center justify-between px-2">
         <div className="grid gap-1">
-          <h1 className="text-3xl md:text-4xl">Configurações</h1>
+          <h1 className="text-3xl md:text-4xl font-medium">Configurações</h1>
           <p className="text-lg text-muted-foreground">
             Seu perfil de configurações
           </p>

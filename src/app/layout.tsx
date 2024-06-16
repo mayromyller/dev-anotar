@@ -60,6 +60,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* @ts-expect-error Server Component */}
           <Navbar />
           {children}
         </ThemeProvider>

@@ -5,7 +5,11 @@ import { Loader2, Trash } from "lucide-react";
 // @ts-ignore
 import { useFormStatus } from "react-dom";
 
-export function SubmitButton() {
+interface SubmitButtonProps {
+  title?: string;
+}
+
+export function SubmitButton({ title }: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -16,7 +20,7 @@ export function SubmitButton() {
           Enviado...
         </Button>
       ) : (
-        <Button type="submit">Salvar</Button>
+        <Button type="submit">{title ?? "Salvar"}</Button>
       )}
     </>
   );

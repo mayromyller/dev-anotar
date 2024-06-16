@@ -65,8 +65,8 @@ Este projeto foi criado para aprimorar conhecimentos em desenvolvimento de aplic
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/mayromyller/devanotar.git
-   cd devanotar
+   https://github.com/mayromyller/dev-anotar.git
+   cd dev-anotar
    ```
 
 2. Instale as dependências:

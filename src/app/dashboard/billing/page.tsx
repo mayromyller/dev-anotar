@@ -16,6 +16,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import prisma from "@/app/lib/db";
+import { unstable_noStore as noStore } from "next/cache";
 
 const featureItems = [
   { name: "Acesso ilimitado" },
@@ -26,9 +27,10 @@ const featureItems = [
 ];
 
 async function getData(userId: string) {
+  noStore();
   const data = await prisma.subscription.findUnique({
     where: {
-      userId,
+      userId: userId,
     },
     select: {
       status: true,

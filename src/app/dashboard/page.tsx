@@ -49,7 +49,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="grid items-start gap-8">
-      <div className="flex items-center justify-between px-2">
+      <div className="flex items-center justify-between gap-2 px-2 flex-col md:flex-row">
         <div className="grid gap-1">
           <h1 className="text-3xl md:text-4xl font-medium">Suas notas</h1>
           <p className="text-lg text-muted-foreground">
@@ -58,7 +58,7 @@ export default async function DashboardPage() {
           </p>
         </div>
         {data?.Subscription?.status === "active" ? (
-          <Button asChild>
+          <Button asChild className="w-full sm:w-auto">
             <Link href="/dashboard/new">Crie uma nova nota</Link>
           </Button>
         ) : (

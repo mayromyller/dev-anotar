@@ -2,17 +2,6 @@ import Link from "next/link";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import prisma from "../lib/db";
 import { Button } from "@/components/ui/button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { Edit, File } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { TrashDelete } from "../components/SubmitButton";
@@ -116,27 +105,11 @@ export default async function DashboardPage() {
                     <Edit className="w-4 h-4" />
                   </Button>
                 </Link>
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <TrashDelete />
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>
-                        Deseja mesmo deletar está nota?
-                      </AlertDialogTitle>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <form action={deleteNote}>
-                        <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                        <AlertDialogAction className="bg-red-500 text-white">
-                          Sim, Deletar
-                        </AlertDialogAction>
-                        <input type="hidden" name="noteId" value={item.id} />
-                      </form>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
+
+                <form action={deleteNote}>
+                  <TrashDelete />
+                  <input type="hidden" name="noteId" value={item.id} />
+                </form>
               </div>
             </Card>
           ))}

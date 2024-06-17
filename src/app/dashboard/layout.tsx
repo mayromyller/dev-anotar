@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import prisma from "../lib/db";
 import { stripe } from "../lib/stripe";
 import { unstable_noStore as noStore } from "next/cache";
+import Link from "next/link";
 
 interface UserDataProps {
   id: string;
@@ -85,8 +86,19 @@ export default async function DashboardLayout({
         <aside className="hidden w-[200px] flex-col md:flex">
           <DashboardNav />
         </aside>
-        <main>{children}</main>
+        <main className="min-h-[100vh]">{children}</main>
       </div>
+
+      <footer className="my-8 border-t">
+        <div className="flex items-center justify-center py-8">
+          <p className="text-white text-xs">
+            developed by{" "}
+            <span className="text-primary">
+              <Link href="https://github.com/mayromyller">Mayro Myller</Link>
+            </span>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

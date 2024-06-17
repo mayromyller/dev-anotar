@@ -45,8 +45,6 @@ export default async function DashboardPage() {
     revalidatePath("/dashboard");
   }
 
-  console.log(data?.Subscription?.status);
-
   return (
     <div className="grid items-start gap-8">
       <div className="flex items-center justify-between gap-2 px-2 flex-col md:flex-row">
